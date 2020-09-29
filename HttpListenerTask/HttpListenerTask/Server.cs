@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.IO;
 using System.Net;
+using System.Resources;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,12 +13,6 @@ namespace HttpListenerTask
     {
         private static HttpListener listener;
         private string[] prefixes;
-
-        private static Dictionary<string, string> pages = new Dictionary<string, string>
-        {
-            {"/calculator.html", "templates/calculator.html"},
-            {"/students.html", "templates/students.html"}
-        };
 
         public bool IsRunning { get; private set; }
 
@@ -29,7 +25,7 @@ namespace HttpListenerTask
 
         public void Start()
         {
-            var thread = new Thread(new ThreadStart(Run));
+            var thread = new Thread(Run);
             thread.Start();
         }
 
@@ -50,29 +46,23 @@ namespace HttpListenerTask
                 var response = context.Response;
                 
                 var url = request.RawUrl;
-                var buffer = new byte[1];
-
-                if (url.EndsWith("css"))
-                {
-                    response.ContentType = "text/css";
-                    buffer = File.ReadAllBytes(url.Substring(1));
-                }
-                if (url.EndsWith("js"))
-                {
-                    response.ContentType = "text/js";
-                    buffer = File.ReadAllBytes(url.Substring(1));
-                }
-                if (url.EndsWith("html"))
-                {
-                    response.ContentType = "text/html";
-                    buffer = File.ReadAllBytes(pages[url]);
-                }
-
+                var buffer = File.ReadAllBytes(url.Substring(1));
+                response.ContentType = GetContentType(url);
                 response.ContentLength64 = buffer.Length;
+                
                 var output = response.OutputStream;
                 output.Write(buffer, 0, buffer.Length);
                 output.Close();
             } 
+        }
+
+        private static string GetContentType(string url)
+        {
+            if (url.EndsWith("css"))
+                return "text/css";
+            if (url.EndsWith("js"))
+                return "text/js";
+            return "text/html";
         }
     }
 }
