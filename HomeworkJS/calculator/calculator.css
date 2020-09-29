@@ -1,0 +1,71 @@
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 480px;
+    height: 600px;
+}
+
+div {
+    cursor: default;
+}
+
+.digit,
+.operation,
+.dot {
+    display: inline-block;
+    height: 80px;
+    width: 100px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 80px;
+    margin: 5px;
+}
+
+.delete-all,
+.get-result,
+.zero-digit {
+    display: inline-block;
+    height: 80px;
+    width: 215px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 80px;
+    margin: 5px;
+}
+
+.result {
+    height: 150px;
+    width: 440px;
+    margin: 5px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 150px;
+    border: 2px solid #2EC4B6;
+}
+
+.digit,
+.zero-digit,
+.dot {
+    background-color: #FF9F1C;
+    color: #fff;
+}
+
+.operation,
+.get-result,
+.delete-all {
+    background-color: #2EC4B6;
+    color: #fff;
+}
+
+.operation:hover,
+.get-result:hover,
+.delete-all:hover {
+    background-color: #6ac7c1;
+}
+
+.digit:hover,
+.zero-digit:hover,
+.dot:hover {
+    background-color: #FFBF69;
+}

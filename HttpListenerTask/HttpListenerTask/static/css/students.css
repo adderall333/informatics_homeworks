@@ -1,0 +1,65 @@
+.cell {
+    display: inline-block;
+    border: 1px solid #FF9F1C;
+    width: 150px;
+    height: 40px;
+    padding: 5px;
+}
+
+.form {
+    margin-top: 50px;
+    width: 300px;
+    text-align: right;
+}
+
+.form-item {
+    color: #FF9F1C;    
+    height: 40px;    
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid #FF9F1C;
+    border-radius: 30px;
+    color: #FF9F1C; 
+    cursor: pointer;
+}
+
+button:hover {
+    color: #FFBF69;
+    border-color: #FFBF69;
+}
+
+input {
+    border-color: #FFBF69;
+}
+
+.navigation {
+    margin-top: 30px;
+}
+
+.sorter {
+    display: inline-block;
+    margin-bottom: 50px;
+}
+
+select {
+    width: 100px;
+    height: 30px;
+    border: 2px solid #FF9F1C;
+    color: #FF9F1C; 
+}
+
+.filters {
+    display: inline-block;
+    margin-left: 50px;
+}
+
+.filter-input {
+    height: 24px;
+    border: 2px solid #FF9F1C;
+    color: #FF9F1C;
+}
+
